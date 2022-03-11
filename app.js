@@ -50,8 +50,10 @@ mongoose.connect(process.env.DB_CONNECTION_STRING).then(()=>{
     console(err);
 })
 
-
-
+//root address
+app.get('/',(req,res)=>{
+    res.send("hello from Jwt Todo Api Server!");
+});
 //routing
 app.use('/api/v1',router);
 
