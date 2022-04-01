@@ -51,7 +51,11 @@ exports.login = asyncHandler(async(req,res)=>{
             const isMatch = await bcrypt.compare(password,user.password);
             if((user.email === email) && isMatch){
                 res.status(200).json({
-                    user,
+                    _id:user.id,
+                    name:user.name,
+                    email:user.email,
+                    avater:user.avater?user.avater:'',
+                    cloudinary_id:user.cloudinary_id?user.cloudinary_id:'',
                     token:generateToken(user._id)
                 });
             }else{
